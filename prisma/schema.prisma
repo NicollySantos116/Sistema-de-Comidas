@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  url      = env("DATABASE_URL")
 }
 
 datasource db {
@@ -7,12 +8,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Comida{
-  id       Int@id @default(autoincrement())
-  nome       String
-  tipo       String
-  preco       Float
-  descricao    String
+model comidas {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  tipo      String
+  preco     Float
+  descricao String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  @@map ("comidas")
+  @@map("comidas")
 }
